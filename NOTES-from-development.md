@@ -1,6 +1,8 @@
 # IMPORTANT
 _**if you create or modifya file, please note here whats and why**_
 
+maybe you should red this link, about how link a git local repository and github remote one [Adding an existing project to GitHub using the command line](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/)
+
 ## INDEX
 - [Notes](#Notes)
 - [Components](#components)
