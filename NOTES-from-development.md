@@ -19,10 +19,26 @@ in other things I'am using [create-react-app](https://github.com/facebook/create
 overall on the way in how react is extended and implemented
 eg:
 ```javascript
+    // from this [ OLD ]
+    import React from 'react';
+    import { render } form 'react-dom';
 
+    class App extends React.Component {
+        render (){
+            return (
+                ...
+            )
+        }
+    }
+    // to this [ new ]
+    import React, { Component } form 'react';
+
+    class App extends Component {
+        ...
+    }
 ```
 
-
+----
 
 ## Components
 
