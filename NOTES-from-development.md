@@ -44,3 +44,10 @@ eg:
 
 ### **App** _[<= back to mine menu](#index)_
 1. bla bla
+
+--------------------
+
+### ReactJS Basics - #6 Passing Data with Props
+
+- react te pide que tengas una key unica porque asi trabaja mejor
+- 12:10 crea una especie de interface para manejar el tipo de datos que acepta en cada props que resive
