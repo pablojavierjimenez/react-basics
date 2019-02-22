@@ -5,6 +5,8 @@ class Home extends Component {
     /**
      * @class Home
      * @classdesc is a main application tag container
+     * @constructor to learn about constructor documentation Go...
+     *              https://reactjs.org/docs/react-component.html#constructor
      * @property {object} this.props
      * @example this.props= {
      *    name: {string},
@@ -16,16 +18,36 @@ class Home extends Component {
      * @implements
      *    <Home name={"Chaboncito"} age={27} user={user}/>
      */
+    constructor( props ) {
+        super();
+        this.age = props.age;
+        console.log('constructor: ', this);
+    }
+    
+    onMakeOlder() {
+        this.age += 3;
+        console.log(this.age);
+    }
+    onMakeYounger() {
+        this.age -= 2;
+        console.log(this.age);
+    }
+    
     render() {
-        var localText = "tetox";
         return (
             <main className="App">
                 <h1>{this.props.name}</h1>
-                <p>{localText}</p>
-                <p>your name is {this.props.name} and your age is {this.props.age}</p>
-                <ul>user object => {this.props.user.hobbies.map((hobbie, indexKey) => <li key={indexKey}> {hobbie}</li>)}</ul>
-
-                {this.props.children}
+                <p>your name is {this.props.name} and your age is { this.age }</p>
+                {/**
+                 * here are two diferents ways or approach in witch you can implement a function on react
+                 * the _.bind(this)_ one
+                */}
+                <button className="botonLoco" onClick={ this.onMakeOlder.bind(this) }>Make me Older!</button>
+                {/**
+                 * the _arrow function_ one
+                */}
+                <button className="botonLoco" onClick={ () => this.onMakeYounger() }>Make me Younger!</button>
+                {console.log('render-return: ', this)}
             </main>
         );
     }
@@ -37,12 +59,7 @@ class Home extends Component {
  */
 Home.propTypes = {
     name: PropTypes.string,
-    age: PropTypes.number.isRequired,
-    user: PropTypes.shape({
-        name: PropTypes.string,
-        hobbies: PropTypes.array
-    }),
-    children: PropTypes.element.isRequired
+    age: PropTypes.number.isRequired
 };
 
 export default Home;
