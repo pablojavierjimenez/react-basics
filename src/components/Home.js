@@ -5,27 +5,57 @@ class Home extends Component {
     /**
      * @class Home
      * @classdesc is a main application tag container
+     * @constructor to learn about constructor documentation Go...
+     *              *reactjs:* https://reactjs.org/docs/react-component.html#constructor
+     *              *mozilla:* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Constructor
      * @property {object} this.props
      * @example this.props= {
      *    name: {string},
-     *    age: {number},
+     *    initialAge: {number},
      *    user: {
      *      name: {string},
      *      hobbies: {Array}
      *    };
-     * @implements
-     *    <Home name={"Chaboncito"} age={27} user={user}/>
+     * @implements <Home name={"Chaboncito"} initialAge={27} user={user}/>
      */
+    constructor(props) {
+        super();
+        this.state = {
+            age: props.initialAge,
+            status: 0
+        };
+    }
+
+    onMakeOlder() {
+        /**
+         * @tutorial https://reactjs.org/docs/react-component.html#setstate
+         */
+        this.setState({
+            age: this.state.age + 3
+        });
+    }
+    onMakeYounger() {
+        this.setState({
+            age: this.state.age - 2
+        });
+    }
+
     render() {
-        var localText = "tetox";
         return (
             <main className="App">
                 <h1>{this.props.name}</h1>
-                <p>{localText}</p>
-                <p>your name is {this.props.name} and your age is {this.props.age}</p>
-                <ul>user object => {this.props.user.hobbies.map((hobbie, indexKey) => <li key={indexKey}> {hobbie}</li>)}</ul>
-
-                {this.props.children}
+                <p>your name is {this.props.name} </p>
+                <p>age: {this.state.age}</p>
+                <p>status: {this.state.status}</p>
+                {/**
+                 * here are two diferents ways or approach in witch you can implement a function on react
+                 * the _.bind(this)_ one
+                */}
+                <button className="botonLoco" onClick={this.onMakeOlder.bind(this)}>Make me Older!</button>
+                {/**
+                 * the _arrow function_ one
+                */}
+                <button className="botonLoco" onClick={() => this.onMakeYounger()}>Make me Younger!</button>
             </main>
         );
     }
@@ -37,12 +67,7 @@ class Home extends Component {
  */
 Home.propTypes = {
     name: PropTypes.string,
-    age: PropTypes.number.isRequired,
-    user: PropTypes.shape({
-        name: PropTypes.string,
-        hobbies: PropTypes.array
-    }),
-    children: PropTypes.element.isRequired
+    age: PropTypes.number.isRequired
 };
 
 export default Home;
