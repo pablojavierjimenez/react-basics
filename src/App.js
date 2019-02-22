@@ -27,13 +27,7 @@ class App extends Component {
          *      *<p>soy hijo de home</p>*
          *    *</Home>*
         */}
-        <Home name={"Chaboncito"} age={34} user={user} >
-          {/* you most put a child element cause isRequired */}
-          <p>
-            y aca pondria otro tipo de textos
-            <mark> {textFromApp} </mark>
-          </p>
-        </Home>
+        <Home name={"Chaboncito"} age={34} />
       </div>
     );
   }
