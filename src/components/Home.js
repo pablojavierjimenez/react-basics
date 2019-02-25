@@ -21,7 +21,23 @@ class Home extends Component {
     constructor(props) {
         super();
         /**
+         * **STATE**
+         * differences between _props_ and _states_:
+         * @reference https://youtu.be/e5n9j9n83OM?t=24
+         * **props:** Los props son la manera que un componente superior manda información a componentes inferiores.
+         *            Los props siempre van de componentes superiores a componentes inferiores,
+         *            es por eso que React se ganó la fama de tener un flujo de datos uni-direccional.
+         * **state:** el estado es 'que pasa' dentro del componente en si mismo, y que no es cambiado desde afuera (parent scope) de este,
+         *            y cuyos cambios son disparados y modificados desde dentro del mismo componente,
+         *            y el componente tiene control de los 'estados' de su entorno, pero no puede modificar las props
+         *            las cuales solo pueden ser modificadas por su parent scope    
          * @tutorial https://reactjs.org/docs/react-component.html#setstate
+         * 
+         * @NOTE : a good practics is not setting props directly to state
+         * @example
+         * this.state = {age: props.initialAge}
+         * insted of
+         * this.state = {age: props.age}
          */
         this.state = {
             age: props.initialAge,
@@ -29,6 +45,17 @@ class Home extends Component {
         };
 
         this.onMakeYounger = this.onMakeYounger.bind(this);
+
+        /**
+         * este ejemplo es para demostrar que reac maneja cada variable en su estado por separado
+         * entonces no importa cuantas veces se modifique la edad o cualquier otra variable, 
+         * nosotros siempre podemos manejar cuando cambia un estado
+         */
+        setTimeout(() => {
+            this.setState({
+                status: this.state.status + 1
+            })
+        }, 3000);
     }
 
 
