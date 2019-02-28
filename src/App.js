@@ -12,9 +12,18 @@ class App extends Component {
       name: 'jey jey',
       hobbies: ['running', 'play violin']
     };
+    /**
+     * 
+     */
     return (
       <div className="App">
-        <Header />
+        {/**
+         * **Header** is an example of an stateLess component
+         * its mean that the component itself n use or implement the 
+         * react state, insted of that it use the values recived by props
+         * @reference https://reactjs.org/docs/state-and-lifecycle.html#the-data-flows-down
+         */}
+        <Header homeLink="Home" />
         {/**
          * _Acerca de lo elemento hijos de un componente_
          * los componentes pueden utilizarse como un cierre en si mismos,
@@ -26,14 +35,8 @@ class App extends Component {
          *    *<Home>*
          *      *<p>soy hijo de home</p>*
          *    *</Home>*
-        */}
-        <Home name={"Chaboncito"} age={34} user={user} >
-          {/* you most put a child element cause isRequired */}
-          <p>
-            y aca pondria otro tipo de textos
-            <mark> {textFromApp} </mark>
-          </p>
-        </Home>
+         */}
+        <Home name={"Chaboncito"} initialAge={ 34 } />
       </div>
     );
   }
